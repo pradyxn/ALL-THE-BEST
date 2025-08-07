@@ -1,0 +1,330 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Fallback font */
+    background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/images/marigold-field-vRC8b7tOe8qGhuHorI4U5dGyEJ3leP.png'); /* Marigold field background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden; /* Hide scrollbars for floating elements */
+    cursor: none; /* Hide default cursor */
+    color: #240F1F; /* Foreground color */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Custom Colors */
+:root {
+    --pink-primary: #FFC0CB; /* Classic Pink */
+    --pink-light: #FCE4EC;  /* Lighter Pink */
+    --pink-pastel: #FFD1DC; /* Pastel Pink */
+    --white-soft: #F8F8F8;  /* Off-white */
+    --pink-800-90: rgba(153, 51, 102, 0.9); /* Darker pink for body text */
+    --green-clover: #22C55E; /* Green for clovers */
+}
+
+/* Font Families */
+.font-comforter { font-family: 'Comforter', cursive; }
+.font-unkempt { font-family: 'Unkempt', cursive; }
+.font-henny-penny { font-family: 'Henny Penny', cursive; }
+
+/* Text Outline Effect */
+.text-outline {
+    text-shadow:
+        1px 1px 0 #000, -1px -1px 0 #000,
+        1px -1px 0 #000, -1px 1px 0 #000,
+        1px 0px 0 #000, 0px 1px 0 #000,
+        -1px 0px 0 #000, 0px -1px 0 #000;
+}
+
+/* Heart shape for image */
+.heart-shape {
+    clip-path: path("M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+}
+
+/* Hero Section Styling */
+.hero-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem; /* py-12 px-4 */
+    text-align: center;
+    width: 100%;
+    max-width: 48rem; /* max-w-3xl */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.hero-section h1 {
+    font-size: 2.25rem; /* text-4xl */
+    line-height: 1.25; /* leading-5 */
+    font-weight: 800; /* font-extrabold */
+    color: var(--pink-primary);
+    margin-bottom: 1.5rem; /* mb-6 */
+    text-align: center;
+    /* Removed drop-shadow-lg to allow text-outline to work */
+}
+@media (min-width: 768px) { /* md breakpoint */
+    .hero-section h1 {
+        font-size: 3rem; /* md:text-5xl */
+    }
+}
+
+.hero-section p {
+    font-size: 1.25rem; /* text-xl */
+    line-height: 1.75rem; /* leading-7 */
+    color: var(--pink-800-90);
+    max-width: 42rem; /* max-w-2xl */
+    margin-bottom: 2rem; /* mb-8 */
+    text-align: center;
+}
+@media (min-width: 768px) { /* md breakpoint */
+    .hero-section p {
+        font-size: 1.5rem; /* md:text-2xl */
+    }
+}
+
+.hero-image-container {
+    position: relative;
+    width: 16rem; /* w-64 */
+    height: 16rem; /* h-64 */
+    border-radius: 9999px; /* rounded-full */
+    overflow: hidden;
+    background: linear-gradient(to bottom right, var(--pink-light), var(--pink-pastel)); /* bg-gradient-to-br from-pink-light to-pink-pastel */
+    padding: 4px; /* p-1 */
+    box-shadow: 0 20px 25px -5px rgba(255, 192, 203, 0.5), 0 8px 10px -6px rgba(255, 192, 203, 0.5); /* shadow-xl shadow-pink-primary/50 */
+}
+@media (min-width: 768px) { /* md breakpoint */
+    .hero-image-container {
+        width: 20rem; /* md:w-80 */
+        height: 20rem; /* md:h-80 */
+    }
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 9999px; /* rounded-full */
+}
+
+/* Clovers Container to ensure it fills the screen for positioning */
+#clovers-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    width: 100vw; /* Ensure it takes full width */
+    height: 100vh; /* Ensure it takes full height */
+}
+
+/* Clover Button Styling */
+.clover-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 20;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 3rem; /* text-4xl */
+    line-height: 1;
+    color: var(--green-clover);
+}
+.clover-button:hover { transform: scale(1.1); }
+.clover-button:active { transform: scale(0.95); }
+.clover-button.clicked { opacity: 0; pointer-events: none; }
+
+.clover-button.special {
+    font-size: 3.5rem; /* text-5xl */
+    color: var(--pink-primary);
+}
+@media (min-width: 768px) { /* md breakpoint */
+    .clover-button { font-size: 4rem; /* md:text-5xl */ }
+    .clover-button.special { font-size: 4.5rem; /* md:text-6xl */ }
+}
+
+/* Dialog/Modal Styling */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+.dialog-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dialog-content {
+    background: rgba(255, 255, 255, 0.3); /* bg-white/30 */
+    backdrop-filter: blur(16px); /* backdrop-blur-lg */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* border border-white/50 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    color: var(--pink-primary);
+    font-weight: 600; /* font-semibold */
+    text-align: center;
+    padding: 1.5rem; /* p-6 */
+    max-width: 425px; /* sm:max-w-[425px] */
+    transform: scale(0.95);
+    transition: transform 0.3s ease-out;
+}
+.dialog-overlay.open .dialog-content {
+    transform: scale(1);
+}
+
+.dialog-content h2 {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    color: var(--pink-primary);
+    margin-bottom: 1rem;
+}
+
+.dialog-content p {
+    font-size: 1.125rem; /* text-lg */
+    color: rgba(153, 51, 102, 0.9); /* text-pink-800/90 */
+    margin-top: 1rem;
+}
+
+/* Final Modal Specific Styling */
+.final-modal-content {
+    background: linear-gradient(to bottom right, rgba(252, 228, 236, 0.7), rgba(255, 209, 220, 0.7)); /* bg-gradient-to-br from-pink-light/70 to-pink-pastel/70 */
+    backdrop-filter: blur(20px); /* backdrop-blur-xl */
+    border: 1px solid rgba(255, 255, 255, 0.8); /* border border-white/80 */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+    color: #663366; /* text-pink-900 */
+    font-weight: 700; /* font-bold */
+    text-align: center;
+    padding: 2rem; /* p-8 */
+    max-width: 600px; /* sm:max-w-[600px] */
+    max-height: 80vh; /* dialog-content-scroll */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pink-primary) var(--pink-light);
+}
+.final-modal-content::-webkit-scrollbar { width: 8px; }
+.final-modal-content::-webkit-scrollbar-track { background: var(--pink-light); border-radius: 10px; }
+.final-modal-content::-webkit-scrollbar-thumb { background-color: var(--pink-primary); border-radius: 10px; border: 2px solid var(--pink-light); }
+
+.final-modal-content h2 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 800; /* font-extrabold */
+    color: var(--pink-primary);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* drop-shadow-md */
+    margin-bottom: 1.5rem;
+}
+
+.final-modal-content p {
+    font-size: 1.25rem; /* text-xl */
+    color: rgba(102, 51, 102, 0.9); /* text-pink-900/90 */
+    margin-top: 1.5rem;
+    line-height: 1.6; /* leading-relaxed */
+}
+
+.final-modal-content .signature {
+    margin-top: 2rem; /* mt-8 */
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--pink-primary);
+}
+
+/* Confetti Effect */
+.confetti-particle {
+    position: fixed;
+    top: -50px; /* Start above screen */
+    left: 0;
+    font-size: 1.5rem; /* text-xl */
+    opacity: 0;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+.confetti-particle.clover { color: var(--green-clover); }
+
+@keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Cursor Trail */
+.cursor-trail-particle {
+    position: fixed;
+    font-size: 1.125rem; /* text-lg */
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    animation: fade-out-up 1s ease-out forwards;
+    z-index: 50;
+}
+
+@keyframes fade-out-up {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-50px) scale(0.5); }
+}
+
+/* Heart Particles (Background) */
+.heart-particle {
+    position: absolute;
+    opacity: 0.7;
+    color: var(--pink-primary);
+    pointer-events: none;
+    animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    20% { opacity: 0.7; }
+    100% { transform: translateY(-100px) translateX(var(--float-x-offset)); opacity: 0; }
+}
+
+/* Audio Player Button */
+.audio-player-button {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background-color 0.2s ease-in-out;
+}
+.audio-player-button:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+.audio-player-button svg {
+    width: 1.25rem; /* h-5 w-5 */
+    height: 1.25rem;
+    color: var(--pink-primary);
+}
